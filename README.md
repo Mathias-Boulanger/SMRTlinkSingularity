@@ -6,17 +6,16 @@ The image created is large (> 4Go). Make sure you have enough storage when creat
 
 How to:
 
-    install singularity on your machine (or WM) and make sure you have the sudo rights
+#install singularity on your machine (or WM) and make sure you have the sudo rights
+##To build the image:
 
-    To build the image:
+    sudo singularity build SMRTlink_v11.sif SMRTlink_v11.def
 
-     sudo singularity build SMRTlink_v11.sif SMRTlink_v11.def
-
-    To use the image in an interactive shell:
+##To use the image in an interactive shell:
 
      singularity shell SMRTlink_v11.sif 
 
-    execute a specific tool:
+##To execute a specific tool:
 
      singularity exec SMRTlink_v11.sif bamsieve input.bam --show-zmws
 
