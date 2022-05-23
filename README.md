@@ -1,8 +1,8 @@
 # SMRTlinkSingularity
-singularity image definition for SMRT link v11
+Singularity image definition for SMRT link v11
 
-Definition file for the creation of a singularity image containing SMRTlink v11
-The image created is large (> 4Go). Make sure you
+Definition file for the creation of a singularity image containing SMRTlink v11.0.0.146107
+The image created is large (> 4Go). Make sure you have enough storage when creating the image.
 
 How to:
 
@@ -10,14 +10,14 @@ How to:
 
     To build the image:
 
-     sudo singularity build SMRTlinkv11.sif SMRTlinkv11.def
+     sudo singularity build SMRTlink_v11.sif SMRTlink_v11.def
 
     To use the image in an interactive shell:
 
-     singularity shell SMRTlinkv11.sif 
+     singularity shell SMRTlink_v11.sif 
 
     execute a specific tool:
 
-     singularity exec SMRTlinkv11.sif bamsieve input.bam --show-zmws
+     singularity exec SMRTlink_v11.sif bamsieve input.bam --show-zmws
 
 Enjoy!
