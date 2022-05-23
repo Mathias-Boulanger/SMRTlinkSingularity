@@ -18,4 +18,6 @@ How to proceed:
 
         singularity exec SMRTlink_v11.sif bamsieve input.bam --show-zmws
 
+To mount specific repo accessible by the singularity image, you can set up this variable once: `export SINGULARITY_BINDPATH=/opt,/MYPATH` 
+
 Enjoy!
