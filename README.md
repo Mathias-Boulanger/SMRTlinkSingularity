@@ -1,7 +1,6 @@
-# SMRTlinkSingularity
-Singularity image definition for SMRT link v11
+# SMRT link Singularity image definition
 
-Definition file for the creation of a singularity image containing SMRTlink v11.0.0.146107
+Definition file for the creation of a singularity image containing SMRTlink v11.0.0.146107.
 The image created is large (> 4Go). Make sure you have enough storage when creating the image.
 
 How to proceed:
