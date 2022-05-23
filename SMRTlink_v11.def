@@ -23,7 +23,6 @@ From: debian:stretch-slim
 
 	# Generate a new PacBio root directory and make smrtuser the owner
 		if ! -d $SMRT ; then
-		echo 'OK'
 			mkdir $SMRT && chown smrtanalysis:users $SMRT
 		fi
 
@@ -40,19 +39,8 @@ From: debian:stretch-slim
 
 		rm $SMRT/smrtlink_11.0.0.146107.*
 
-
-	# wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda3.sh 
-	# bash miniconda3.sh -b -p /opt/pacbio/miniconda
-	# export PATH="/opt/pacbio/miniconda/bin/:$PATH"
-	# conda config --add channels conda-forge
-	# conda config --add channels defaults
-	# conda config --add channels r
-	# conda config --add channels bioconda
-	# conda install -y isoseq3
-
 %environment
 	export PATH=/opt/pacbio/smrtlink/smrtcmds/bin/:$PATH
-	# export PATH=/opt/pacbio/miniconda/bin/:$PATH
 
 %runscript
 	exec /bin/bash "$@"
