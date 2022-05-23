@@ -1,0 +1,58 @@
+Bootstrap: docker
+From: debian:stretch-slim
+
+%labels
+	AUTHOR Mathias Boulanger
+	Version v11.0.0.146107
+
+%post
+	# install dependencies
+		apt-get update && apt-get install -y locales-all build-essential gcc-multilib libboost-all-dev libhdf5-serial-dev zlib1g-dev pkg-config curl unzip bzip2 rsync
+
+	# Important variable
+		SMRT_ROOT="/opt/pacbio/smrtlink"
+		SMRT_USER=smrtanalysis
+		SMRT=/opt/pacbio/
+		#smrtlinkhost.mydomain.com=SMRTlinkV11_singluarity_Host
+		#smrtlinkhost=SlV11SH
+
+	# create new user if necessary
+		if ! grep -c "$SMRT_USER:" /etc/passwd; then
+			useradd  -g users -d /home/$SMRT_USER -s /bin/bash -p PacBio $SMRT_USER
+		fi
+
+	# Generate a new PacBio root directory and make smrtuser the owner
+		if ! -d $SMRT ; then
+		echo 'OK'
+			mkdir $SMRT && chown smrtanalysis:users $SMRT
+		fi
+
+	# downloading SMRTlink V11, install it as smrtuser and remove the installer
+		su $SMRT_USER
+		curl https://downloads.pacbcloud.com/public/software/installers/smrtlink_11.0.0.146107.zip -O -J -L && unzip -u -P 9rVkq3HT smrtlink_11.0.0.146107.zip -d $SMRT
+
+		if -d $SMRT_ROOT ; then
+			rm -rf $SMRT_ROOT
+			$SMRT/smrtlink_11.0.0.146107.run --rootdir $SMRT_ROOT --smrttools-only
+		else
+			$SMRT/smrtlink_11.0.0.146107.run --rootdir $SMRT_ROOT --smrttools-only
+		fi
+
+		rm $SMRT/smrtlink_11.0.0.146107.*
+
+
+	# wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda3.sh 
+	# bash miniconda3.sh -b -p /opt/pacbio/miniconda
+	# export PATH="/opt/pacbio/miniconda/bin/:$PATH"
+	# conda config --add channels conda-forge
+	# conda config --add channels defaults
+	# conda config --add channels r
+	# conda config --add channels bioconda
+	# conda install -y isoseq3
+
+%environment
+	export PATH=/opt/pacbio/smrtlink/smrtcmds/bin/:$PATH
+	# export PATH=/opt/pacbio/miniconda/bin/:$PATH
+
+%runscript
+	exec /bin/bash "$@"
