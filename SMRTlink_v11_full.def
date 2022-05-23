@@ -43,7 +43,7 @@ From: debian:stretch-slim
 		curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 		bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/pacbio/miniconda -f
 		export PATH="/opt/pacbio/miniconda/bin/:$PATH"
-		conda install -y -c bioconda samtools bedops 
+		conda install -y -c bioconda samtools bedops bedtools
 		rm Miniconda3-latest-Linux-x86_64.sh
 
 %environment
