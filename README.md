@@ -1,7 +1,7 @@
 # SMRT link Singularity image definition
 
 Definition file for the creation of a singularity image containing SMRTlink v11.0.0.146107.
-The image created is large (> 4Go). Make sure you have enough storage when creating the image.
+The created image is large (> 4Go). Make sure you have enough storage space when creating the image.
 
 How to proceed:
 
@@ -19,5 +19,10 @@ How to proceed:
         singularity exec SMRTlink_v11.sif bamsieve input.bam --show-zmws
 
 To mount specific repo accessible by the singularity image, you can set up this variable once: `export SINGULARITY_BINDPATH=/opt,/MYPATH` 
+
+The definition file 'SMRTlink_v11_full.def' contains extra installed tools listed below:
+- samtools
+- bedops suite
+- GNU datamash
 
 Enjoy!
