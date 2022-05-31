@@ -24,5 +24,6 @@ The definition file 'SMRTlink_v11_full.def' contains extra installed tools liste
 - samtools
 - bedops suite
 - GNU datamash
+- pbtk
 
 Enjoy!
