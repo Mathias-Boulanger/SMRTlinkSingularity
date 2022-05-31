@@ -21,9 +21,8 @@ How to proceed:
 To mount specific repo accessible by the singularity image, you can set up this variable once: `export SINGULARITY_BINDPATH=/opt,/MYPATH` 
 
 The definition file 'SMRTlink_v11_full.def' contains extra installed tools listed below:
-- samtools
 - bedops suite
+- bedtools suite
 - GNU datamash
-- pbtk
 
 Enjoy!
