@@ -42,13 +42,13 @@ From: debian:stretch-slim
 	# Installing some extra tools through conda
 		curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 		bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/pacbio/miniconda -f
-		export PATH=$PATH:opt/pacbio/miniconda/bin/
-		conda install -y -c bioconda samtools bedops bedtools pbtk
+		export PATH=$PATH:/opt/pacbio/miniconda/bin/
+		conda install -y -c bioconda bedops bedtools
 		rm Miniconda3-latest-Linux-x86_64.sh
 
 %environment
 	export PATH=/opt/pacbio/smrtlink/smrtcmds/bin/:$PATH
-	export PATH=$PATH:opt/pacbio/miniconda/bin/
+	export PATH=$PATH:/opt/pacbio/miniconda/bin/
 
 %runscript
 	exec /bin/bash "$@"
